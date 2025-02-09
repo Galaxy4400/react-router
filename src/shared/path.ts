@@ -1,7 +1,7 @@
 type ID = string | number;
 
 export const path = {
-	root: "/",
+	root: "/react-router/",
 	home() {
 		return path.root;
 	},
