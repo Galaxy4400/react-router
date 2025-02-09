@@ -14,7 +14,9 @@ export const App = () => {
 		<div className="app">
 			<nav>
 				<ul className="menu">
-					<NavLink to={path.home()}>Home</NavLink>
+					<NavLink to={path.home()} end>
+						Home
+					</NavLink>
 					<NavLink to={path.heroes.root()}>Heroes</NavLink>
 					<NavLink to={path.locations.root()}>Locations</NavLink>
 					<NavLink to={path.episodes.root()}>Episodes</NavLink>
