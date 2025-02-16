@@ -1,4 +1,4 @@
-import "../assets/index.css";
+import "../app/assets/index.css";
 import { createRoot } from "react-dom/client";
 import { App } from "./app";
 import { BrowserRouter } from "react-router-dom";

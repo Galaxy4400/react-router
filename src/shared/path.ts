@@ -5,6 +5,9 @@ export const path = {
 	home() {
 		return path.root;
 	},
+	login() {
+		return path.root.concat("login");
+	},
 	page404() {
 		return path.root.concat("404");
 	},

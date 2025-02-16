@@ -47,6 +47,11 @@ input::-ms-clear {
 	display: none;
 }
 
+input {
+	border-radius: 8px;
+	padding: 5px 15px;
+}
+
 button {
 	cursor: pointer;
 	background: transparent;
@@ -193,4 +198,24 @@ dd {
 .prev-next {
 	display: flex;
 	justify-content: space-between;
+}
+
+.login-form-wrapper {
+	min-height: 100vh;
+	gap: 50px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+}
+
+.login-form {
+	display: flex;
+	gap: 15px;
+}
+
+.welcome {
+	display: flex;
+	gap: 20px;
+	align-items: center;
 }
