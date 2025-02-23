@@ -1,13 +1,19 @@
 import { Link, Navigate, useParams } from "react-router-dom";
-import { bff } from "../shared/bff";
 import { path } from "../shared/path";
+import { useEffect, useState } from "react";
+import { ICharacter } from "../shared/types";
 
 export const Hero = () => {
 	const { id } = useParams();
+	const [hero, setHero] = useState<ICharacter | null>(null);
 
-	const hero = bff.getHero(id);
+	useEffect(() => {
+		fetch(`https://rickandmortyapi.com/api/character/${id}`)
+			.then((response) => response.json())
+			.then((character) => setHero(character));
+	}, [id]);
 
-	if (!hero) {
+	if (!id) {
 		return <Navigate to={path.page404()} />;
 	}
 
@@ -22,23 +28,23 @@ export const Hero = () => {
 			<br />
 			<dl>
 				<dt>id</dt>
-				<dd>{hero.id}</dd>
+				<dd>{hero?.id}</dd>
 				<dt>name</dt>
-				<dd>{hero.name}</dd>
+				<dd>{hero?.name}</dd>
 				<dt>status</dt>
-				<dd>{hero.status}</dd>
+				<dd>{hero?.status}</dd>
 				<dt>species</dt>
-				<dd>{hero.species}</dd>
+				<dd>{hero?.species}</dd>
 				<dt>type</dt>
-				<dd>{hero.type}</dd>
+				<dd>{hero?.type}</dd>
 				<dt>gender</dt>
-				<dd>{hero.gender}</dd>
+				<dd>{hero?.gender}</dd>
 				<dt>image</dt>
 				<dd>
-					<img src={hero.image} alt={hero.name} />
+					<img src={hero?.image} alt={hero?.name} />
 				</dd>
 				<dt>created</dt>
-				<dd>{hero.created}</dd>
+				<dd>{hero?.created}</dd>
 			</dl>
 		</div>
 	);

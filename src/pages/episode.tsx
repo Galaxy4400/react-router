@@ -1,13 +1,19 @@
 import { Link, Navigate, useParams } from "react-router-dom";
-import { bff } from "../shared/bff";
 import { path } from "../shared/path";
+import { useEffect, useState } from "react";
+import { IEpisode } from "../shared/types";
 
 export const Episode = () => {
 	const { id } = useParams();
+	const [episode, setHero] = useState<IEpisode | null>(null);
 
-	const episonde = bff.getEpisode(id);
+	useEffect(() => {
+		fetch(`https://rickandmortyapi.com/api/episode/${id}`)
+			.then((response) => response.json())
+			.then((episode) => setHero(episode));
+	}, [id]);
 
-	if (!episonde) {
+	if (!id) {
 		return <Navigate to={path.page404()} />;
 	}
 
@@ -22,15 +28,15 @@ export const Episode = () => {
 			<br />
 			<dl>
 				<dt>id</dt>
-				<dd>{episonde.id}</dd>
+				<dd>{episode?.id}</dd>
 				<dt>name</dt>
-				<dd>{episonde.name}</dd>
+				<dd>{episode?.name}</dd>
 				<dt>air_date</dt>
-				<dd>{episonde.air_date}</dd>
+				<dd>{episode?.air_date}</dd>
 				<dt>episode</dt>
-				<dd>{episonde.episode}</dd>
+				<dd>{episode?.episode}</dd>
 				<dt>created</dt>
-				<dd>{episonde.created}</dd>
+				<dd>{episode?.created}</dd>
 			</dl>
 		</div>
 	);
