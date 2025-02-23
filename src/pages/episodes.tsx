@@ -1,25 +1,33 @@
 import { Link } from "react-router-dom";
 import { path } from "../shared/path";
-import { bff } from "../shared/bff";
-import { useSort } from "../shared/hooks/use-sort";
+import { useInfinitySource } from "../shared/hooks";
+
+interface Episode {
+	air_date: string;
+	characters: string[];
+	created: string;
+	episode: string;
+	id: number;
+	name: string;
+	url: string;
+}
 
 export const Episodes = () => {
-	const { sortBy, sortSwitch } = useSort();
+	const { data, loading, error, hasMore, lastNodeRef } = useInfinitySource<Episode>("episode");
 
 	return (
 		<div>
 			<h2>Episodes</h2>
 			<br />
-			<button onClick={sortSwitch}>{sortBy}</button>
-			<br />
-			<br />
 			<ul>
-				{bff.getHeroes(sortBy).map((episode) => (
-					<li key={episode.id}>
+				{data.map((episode, index) => (
+					<li ref={data.length === index + 1 ? lastNodeRef : null} key={episode.id}>
 						<Link to={path.episodes.id(episode.id)}>{episode.name}</Link>
 					</li>
 				))}
 			</ul>
+			{loading && hasMore && <div>Loading...</div>}
+			{error && <div>Error...</div>}
 		</div>
 	);
 };
