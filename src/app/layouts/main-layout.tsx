@@ -1,6 +1,7 @@
 import { AuthStatus } from "../../features";
 import { NavLink, Outlet } from "react-router-dom";
 import { path } from "../../shared/path";
+import { Suspense } from "react";
 
 export const MainLayout = () => {
 	return (
@@ -16,7 +17,9 @@ export const MainLayout = () => {
 					<NavLink to={path.episodes.root()}>Episodes</NavLink>
 				</ul>
 			</nav>
-			<Outlet />
+			<Suspense fallback={<h2>Loading...</h2>}>
+				<Outlet />
+			</Suspense>
 		</div>
 	);
 };

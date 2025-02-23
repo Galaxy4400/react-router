@@ -1,17 +1,19 @@
 import { Route, Routes } from "react-router-dom";
-import { Home } from "../pages/home";
-import { Page404 } from "../pages/404";
-import { Heroes } from "../pages/heroes";
-import { Locations } from "../pages/locations";
-import { Episodes } from "../pages/episodes";
 import { path } from "../shared/path";
-import { Hero } from "../pages/hero";
-import { Location } from "../pages/location";
-import { Episode } from "../pages/episode";
 import { Providers } from "./providers";
 import { Login } from "../pages/login";
 import { MainLayout } from "./layouts";
 import { PrivateRoute } from "./router";
+import { lazy } from "react";
+
+const Home = lazy(() => import("../pages/home").then((module) => ({ default: module.Home })));
+const Page404 = lazy(() => import("../pages/404").then((module) => ({ default: module.Page404 })));
+const Heroes = lazy(() => import("../pages/heroes").then((module) => ({ default: module.Heroes })));
+const Hero = lazy(() => import("../pages/hero").then((module) => ({ default: module.Hero })));
+const Locations = lazy(() => import("../pages/locations").then((module) => ({ default: module.Locations })));
+const Location = lazy(() => import("../pages/location").then((module) => ({ default: module.Location })));
+const Episodes = lazy(() => import("../pages/episodes").then((module) => ({ default: module.Episodes })));
+const Episode = lazy(() => import("../pages/episode").then((module) => ({ default: module.Episode })));
 
 export const App = () => {
 	return (
