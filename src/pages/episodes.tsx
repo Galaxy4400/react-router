@@ -1,19 +1,10 @@
 import { Link } from "react-router-dom";
 import { path } from "../shared/path";
 import { useInfinitySource } from "../shared/hooks";
-
-interface Episode {
-	air_date: string;
-	characters: string[];
-	created: string;
-	episode: string;
-	id: number;
-	name: string;
-	url: string;
-}
+import { IEpisode } from "../shared/types";
 
 export const Episodes = () => {
-	const { data, loading, error, hasMore, lastNodeRef } = useInfinitySource<Episode>("episode");
+	const { data, loading, error, hasMore, lastNodeRef } = useInfinitySource<IEpisode>("episode");
 
 	return (
 		<div>

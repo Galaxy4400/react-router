@@ -1,16 +1,7 @@
 import { Link } from "react-router-dom";
 import { path } from "../shared/path";
 import { useInfinitySource } from "../shared/hooks";
-
-interface Location {
-	created: string;
-	dimension: string;
-	id: number;
-	name: string;
-	residents: string[];
-	type: string;
-	url: string;
-}
+import { Location } from "../shared/types";
 
 export const Locations = () => {
 	const { data, loading, error, hasMore, lastNodeRef } = useInfinitySource<Location>("location");

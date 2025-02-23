@@ -15,7 +15,6 @@ export const useSourceLoad = <T>(source: string, page: number) => {
 		fetch(`https://rickandmortyapi.com/api/${source}?page=${page}`)
 			.then((response) => response.json())
 			.then((data) => {
-				console.log(data);
 				if (data.results) {
 					setData((prev) => [...prev, ...data.results]);
 				} else {
