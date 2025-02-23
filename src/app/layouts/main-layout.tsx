@@ -2,6 +2,7 @@ import { AuthStatus } from "../../features";
 import { NavLink, Outlet } from "react-router-dom";
 import { path } from "../../shared/path";
 import { Suspense } from "react";
+import { ErrorBoundary } from "../../shared/components";
 
 export const MainLayout = () => {
 	return (
@@ -18,7 +19,9 @@ export const MainLayout = () => {
 				</ul>
 			</nav>
 			<Suspense fallback={<h2>Loading...</h2>}>
-				<Outlet />
+				<ErrorBoundary>
+					<Outlet />
+				</ErrorBoundary>
 			</Suspense>
 		</div>
 	);
