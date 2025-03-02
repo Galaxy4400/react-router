@@ -2,6 +2,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { useAuth } from "../app/providers/auth";
 import { FormEvent } from "react";
 import { path } from "../shared/path";
+import { Box, Button, Stack, TextField } from "@mui/material";
 
 export const Login = () => {
 	const auth = useAuth();
@@ -22,12 +23,20 @@ export const Login = () => {
 	};
 
 	return (
-		<div className="login-form-wrapper">
-			<button onClick={() => navigate(-1)}>Назад</button>
-			<form className="login-form" onSubmit={submitHandler}>
-				<input type="text" name="username" placeholder="Имя пользователя" />
-				<button type="submit">Войти</button>
-			</form>
-		</div>
+		<Stack minHeight="100vh" alignItems="center" justifyContent="center">
+			<Stack spacing={2}>
+				<Button variant="outlined" onClick={() => navigate(-1)}>
+					Назад
+				</Button>
+				<Box component="form" onSubmit={submitHandler} minWidth="500px">
+					<Stack direction="row" spacing={2}>
+						<TextField type="text" name="username" placeholder="Имя пользователя" sx={{ flex: 1 }} />
+						<Button type="submit" variant="contained">
+							Войти
+						</Button>
+					</Stack>
+				</Box>
+			</Stack>
+		</Stack>
 	);
 };

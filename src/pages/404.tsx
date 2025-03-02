@@ -1,3 +1,5 @@
+import { Typography } from "@mui/material";
+
 export const Page404 = () => {
-	return <div>404</div>;
+	return <Typography component="h1">404</Typography>;
 };

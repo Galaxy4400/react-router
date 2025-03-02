@@ -8,10 +8,10 @@ export interface IEpisode {
 	url: string;
 }
 
-export interface ILocation {
-	name: string;
-	url: string;
-}
+// export interface ILocation {
+// 	name: string;
+// 	url: string;
+// }
 
 export interface IOrigin {
 	name: string;

@@ -1,3 +1,4 @@
+import { Box, Button, Typography } from "@mui/material";
 import { useState } from "react";
 
 export const Home = () => {
@@ -12,9 +13,13 @@ export const Home = () => {
 	}
 
 	return (
-		<div style={{ display: "flex", flexDirection: "column", gap: "20px", alignItems: "center" }}>
-			<h1>Home Page</h1>
-			<button onClick={triggerError}>Trigger Error</button>
-		</div>
+		<Box textAlign="center">
+			<Typography variant="h1" marginBottom="20px">
+				Home Page
+			</Typography>
+			<Button variant="contained" onClick={triggerError}>
+				Trigger Error
+			</Button>
+		</Box>
 	);
 };
