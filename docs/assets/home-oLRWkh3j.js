@@ -1,0 +1,1 @@
+import{r as n,j as r,B as s,T as a,a as i}from"./index-DTcQp-1c.js";const x=()=>{const[t,o]=n.useState(!1),e=()=>{o(!0)};if(t)throw new Error("Test error in Home component!");return r.jsxs(s,{textAlign:"center",children:[r.jsx(a,{variant:"h1",marginBottom:"20px",children:"Home Page"}),r.jsx(i,{variant:"contained",onClick:e,children:"Trigger Error"})]})};export{x as Home};
